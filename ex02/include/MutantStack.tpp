@@ -5,6 +5,19 @@
 template <typename T>
 MutantStack<T>::MutantStack() : std::stack<T>() {}
 
+// Copy constructor
+template <typename T>
+MutantStack<T>::MutantStack(const MutantStack<T>& other) : std::stack<T>(other) {}
+
+// Assignment operator
+template <typename T>
+MutantStack<T>& MutantStack<T>::operator=(const MutantStack<T>& other) {
+    if (this != &other) {
+        this->c = other.c;  // Assign the container
+    }
+    return *this;
+}
+
 // Destructor
 template <typename T>
 MutantStack<T>::~MutantStack() {}
