@@ -10,6 +10,6 @@ public:
 };
 
 template <typename T>
-typename T::const_iterator easyfind(const T& container, int value);
+typename T::const_iterator easyFind(const T& container, int value);
 
-#include "easyfind.tpp"
+#include "easyFind.tpp"

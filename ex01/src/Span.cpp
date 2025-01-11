@@ -11,7 +11,27 @@ const char* Span::NoSpanException::what() const throw() {
 
 
 
-Span::Span(unsigned int n) : N(n) {}
+Span::Span(unsigned int n) : N(n) {
+    numbers.reserve(n);
+}
+
+Span::Span() : N(0) {
+    numbers.reserve(0);
+}
+
+Span::Span(const Span &other) {
+    *this = other;
+}
+
+Span &Span::operator=(const Span &other) {
+    if (this != &other) {
+        N = other.N;
+        numbers = other.numbers;
+    }
+    return *this;
+}
+
+Span::~Span() {}
 
 void Span::addNumber(int n) {
     if (numbers.size() >= N) {
@@ -50,6 +70,18 @@ int Span::longestSpan() const {
     int minElement = *std::min_element(numbers.begin(), numbers.end());
 
     return maxElement - minElement;
+}
+
+int Span::size() const{
+    return numbers.size();
+}
+
+std::vector<int>::iterator Span::begin() {
+    return numbers.begin();
+}
+
+std::vector<int>::iterator Span::end() {
+    return numbers.end();
 }
 
 void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end) {

@@ -3,6 +3,54 @@
 #include "Span.hpp"
 #include <ctime>    // For time()
 
+
+
+
+void	test_invalid_range() {
+	std::cout << "=== Test invalid range ===" << std::endl;
+	try {
+		std::vector<int> vec;
+		vec.push_back(1);
+		vec.push_back(2);
+		Span sp = Span(1);
+		sp.addNumber(vec.begin(), vec.end());
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		std::vector<int> vec;
+		vec.push_back(1);
+		Span sp = Span(1);
+		sp.addNumber(vec.begin(), vec.end());
+
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+}
+
+void	test_valid_range() {
+	std::cout << "=== Test valid range ===" << std::endl;
+	try {
+		std::vector<int> vec;
+		vec.reserve(5);
+		for (int i = 0; i < 5; i++) {
+			vec.push_back(i);
+		}
+		Span sp = Span(5);
+		sp.addNumber(vec.begin(), vec.end());
+
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+}
+
+
 int main() {
     Span sp(10);
     try {
@@ -64,10 +112,9 @@ int main() {
     std::cout << "Shortest Span (10,000 numbers): " << sp3.shortestSpan() << std::endl;
     std::cout << "Longest Span (10,000 numbers): " << sp3.longestSpan() << std::endl;
 
-    std::cout << "test addNumber(iterator)" << std::endl;
-    Span sp4(100);
-    sp4.addNumber(sp4.numbers.begin(), sp4.numbers.end()); //working on
-    std::cout << "Shortest Span (10,000 numbers): " << sp4.shortestSpan() << std::endl;
-    std::cout << "Longest Span (10,000 numbers): " << sp4.longestSpan() << std::endl;
+    test_invalid_range();
+    test_valid_range();
+
+
     return 0;
 }

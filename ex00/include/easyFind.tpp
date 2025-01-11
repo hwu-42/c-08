@@ -1,4 +1,4 @@
-#include "easyfind.hpp"
+#include "easyFind.hpp"
 
 
 const char* NotFoundException::what() const throw() {
@@ -6,7 +6,7 @@ const char* NotFoundException::what() const throw() {
     }
 
 template <typename T>
-typename T::const_iterator easyfind(const T& container, int value) {
+typename T::const_iterator easyFind(const T& container, int value) {
     typename T::const_iterator it = std::find(container.begin(), container.end(), value);
     if (it == container.end()) {
         throw NotFoundException();
