@@ -15,7 +15,7 @@ public:
     // Iterator types
     typedef typename std::stack<T>::container_type::iterator iterator;
     typedef typename std::stack<T>::container_type::const_iterator const_iterator;
-
+    
     // Methods to access the stack as iterable
     iterator begin();
     const_iterator begin() const;
